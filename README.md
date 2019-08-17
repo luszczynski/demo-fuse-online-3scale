@@ -251,7 +251,7 @@ You can check if your integration is working properly running:
 curl https://$(oc get route -n fuse | grep i-users-api | awk '{print $2"/users"}')
 ```
 
-Or you can try with `[httpie](https://httpie.org/)`:
+Or you can try with [httpie](https://httpie.org/):
 
 ```bash
 http https://$(oc get route -n fuse | grep i-users-api | awk '{print $2"/users"}')
