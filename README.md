@@ -106,7 +106,7 @@ Open your tutorial page: https://tutorial-web-app-webapp.apps.latam-3a88.openshi
 
 Now you should see connection `Users Database` listed in the connections page.
 
-![](img/10.png)
+![](imgs/10.png)
 
 We are good to go for our API creation demo.
 
