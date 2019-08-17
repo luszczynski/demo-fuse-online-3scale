@@ -221,7 +221,7 @@ When adding the Users Database, you need to click on `Invoke SQL to obtain, stor
 
 Also, during the data mapping you won't need to associate the `id` field because it will be already generate by the postgres database.
 
-![](imgs/32.png)
+![](imgs/33.png)
 
 In the end, you should have something like:
 
