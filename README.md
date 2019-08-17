@@ -256,3 +256,40 @@ Or you can try with [httpie](https://httpie.org/):
 ```bash
 http https://$(oc get route -n fuse | grep i-users-api | awk '{print $2"/users"}')
 ```
+
+### Exposing your API using 3Scale
+
+#### Importing API from Openshift
+
+First, let's import our API from Openshift. To do that, just click on `NEW API`.
+
+![](imgs/38.png)
+
+Select `Import from Openshift`. Then choose `fuse` for the `Namespace` combobox and `i-users-api` for the `Name` field. Click on `Create Service`.
+
+![](imgs/39.png)
+
+Now you should see your new api on the 3scale dashboard.
+
+![](imgs/40.png)
+
+#### Creating an application plan for our API
+
+We need to create an application plan for our users api. Click on `Dashboard` menu and then on `i-users-api`
+
+![](imgs/41.png)
+
+Now, click on `Create Application Plan`.
+
+![](imgs/42.png)
+
+For the `Name` field use: `Basic Plan`. And for the `System name`: `basic-plan`. Now click on `Create Application Plan`.
+
+![](imgs/43.png)
+
+We need to publish our application plan. To do that, click on `Publish`
+
+![](imgs/44.png)
+
+#### Creating an application for our API
+
