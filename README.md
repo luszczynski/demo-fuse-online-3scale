@@ -1,6 +1,6 @@
 # Demo using Fuse Online and 3Scale
 
-Demo showing Fuse Online and 3Scale
+Demo showing Fuse Online and 3Scale. This guide was based on [Rodrigo Ramalho demo](https://gist.github.com/hodrigohamalho/a52dfb24383c89b4c6b1022123e195f2).
 
 ## Slides
 
@@ -237,7 +237,22 @@ If you go to the `Home` page, we have 1 integration running.
 
 ![](imgs/37.png)
 
-https://api-3scale-apicast-staging.apps.latam-3a88.openshiftworkshop.com/
+Our last step is to expose our integration on Openshift using `Route`s.
 
-https://rramalho-admin.3scale.net
-https://rramalho.3scale.net
+```bash
+oc create route edge i-users-api --service=i-users-api -n fuse
+```
+
+### Testing your integration
+
+You can check if your integration is working properly running:
+
+```bash
+curl https://$(oc get route -n fuse | grep i-users-api | awk '{print $2"/users"}')
+```
+
+Or you can try with `[httpie](https://httpie.org/)`:
+
+```bash
+http https://$(oc get route -n fuse | grep i-users-api | awk '{print $2"/users"}')
+```
