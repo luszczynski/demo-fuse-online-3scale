@@ -2,6 +2,10 @@
 
 Demo showing Fuse Online and 3Scale. This guide was based on [Rodrigo Ramalho demo](https://gist.github.com/hodrigohamalho/a52dfb24383c89b4c6b1022123e195f2).
 
+We will create and expose an API that get data from a posgresql database using Fuse Online. After that, we'll expose it through 3Scale.
+
+> No code is necessary for this demo
+
 ## Slides
 
 * https://docs.google.com/presentation/d/1MNQHqjj4XZAe7WWRiByu5VTzKuSK3-s-ZBL5uP2Sp-8/edit#slide=id.g5892f11135_0_756
@@ -26,6 +30,7 @@ First, login to Openshift using a token.
 ![](imgs/07.png)
 
 And then copy to clipboard your login command
+
 ![](imgs/08.png)
 
 Now, let's create a new database in a project named `fuse-demo`:
@@ -63,44 +68,46 @@ oc exec -it $POD_POSTGRESQL -- bash -c "psql -U redhat -d sampledb -c \"select *
 ```bash
 oc delete all -l app=postgresql-persistent -n fuse-demo
 oc delete pvc postgresql -n fuse-demo
-oc delete secret postgresql -n fuse-demo`
+oc delete secret postgresql -n fuse-demo
 ```
 
 ### Creating a Database Connection on Fuse Online
 
 Open your tutorial page: https://tutorial-web-app-webapp.apps.latam-3a88.openshiftworkshop.com
 
-> Update this url `https://tutorial-web-app-webapp.apps.latam-3a88.openshiftworkshop.com` according your environment
+> Update this url `https://tutorial-web-app-webapp.apps.latam-3a88.openshiftworkshop.com` according to your environment
 
-* Open Fuse Online
+Open Fuse Online
 
 ![](imgs/01.png)
 
-* Click on `Connections`
+Click on `Connections`
 
 ![](imgs/02.png)
 
-* Click on `Create Connection`
+Click on `Create Connection`
 
 ![](imgs/03.png)
 
-* Then, select `Database`
+Then, select `Database`
 
 ![](imgs/04.png)
 
-1. Fill the database configuration with the following values:
+Fill the database configuration with the following values:
 
-* url: `jdbc:postgresql://postgresql.fuse-demo:5432/sampledb`
-* user: `redhat`
-* password: `redhat`
+```properties
+url: jdbc:postgresql://postgresql.fuse-demo:5432/sampledb
+user: redhat
+password: redhat
+```
 
 ![](imgs/05.png)
 
-* Now, click on `Validate` to make sure everything is working as expected. If it is all good, click on `Next`.
+Now, click on `Validate` to make sure everything is working as expected. If it is all good, click on `Next`.
 
 ![](imgs/09.png)
 
-* The Connection Name is: `Users Database`. Then, click on `Create`
+The Connection Name is: `Users Database`. Then, click on `Create`
 
 ![](imgs/06.png)
 
